@@ -32,6 +32,6 @@ Remember to save your progress and use git add -A and git commit -m "your messag
 
 - I want a history feature, where I can look back at the previous transactions. 
 
-- I want a system where there is a small chance that customers will request a refund for their order, and a passive arressive alert pops up about the qualitity of your products. 
+- I want a system where there is a small chance that customers will request a refund for their order, and a passive aggressive alert pops up about the quality of your products. 
 
 - I want ambient busy cafe background sounds to play while you're on the webpage. 
