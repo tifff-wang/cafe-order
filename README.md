@@ -10,7 +10,7 @@ This video is a 'live' code-along session. Follow these steps below and watch th
 https://www.youtube.com/watch?v=WrhKhAHu0jM
 #### Important note before you begin
 
-There is new CSS styling for this challenge. What you will see in your browser differs to the styling in the code-along video. Don't panic! It is just a style change and won't affect the code along process.
+There is new CSS styling for this challenge. What you will see in your browser differs to the styling in the code-along video. Don't panic! It is just a style change and won't affect the code-along process.
 
 1. Click the Fork button in the top right to create your own copy of this repo.
 
