@@ -22,17 +22,19 @@ Remember to save your progress and use git add -A and git commit -m "your messag
 
 There is new CSS styling for this challenge. What you will see in your browser differs to the styling in the code-along video. Don't panic! There is only one update you should make note of.
 
-In the code-along video at 7.22m, Joseph mentions if we want to see something rendering on the page we need somewhere for it to render to. To assist with this, in the `index.html` file we have added a `<div>` with a class called `container` so that your cafe items are nicely contained and styled with the supplied CSS. Please put all of your `<p>` tags and `<button>` tags inside the supplied `<div>` tag.
+In the code-along video at 7.22m, Joseph mentions if we want to see something rendering on the page we need somewhere for it to render to. To assist with this, in the `index.html` file we have added a `<div>` with a class called `container` so that your cafe items are nicely contained and styled with the supplied CSS. Please put all of your `<p>` tags inside the supplied `<div>` tag, and your `<button>` tags outside the `<div>`.
 
-For example, your code might look like this:
+For example, your code will follow this formatting:
 
 ````
   <body>
     <h1>Javascript Café</h1>
     <div class="container">
       <p>Some text here.</p>
-      <button>A button here!</button>
+      <p>Some more text here!</p>
     </div>
+    <button>A button here.</button>
+    <button>Another button here!</button>
     <script src="cafe.js"></script>
   </body>
 ````
