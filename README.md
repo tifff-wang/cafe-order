@@ -8,9 +8,6 @@ JavaScript Cafe | 3 hours |
 
 This video is a 'live' code-along session. Follow these steps below and watch this pre-recorded lecture to build the app!
 https://www.youtube.com/watch?v=WrhKhAHu0jM
-#### Important note before you begin
-
-There is new CSS styling for this challenge. What you will see in your browser differs to the styling in the code-along video. Don't panic! It is just a style change and won't affect the code-along process.
 
 1. Click the Fork button in the top right to create your own copy of this repo.
 
@@ -20,6 +17,25 @@ There is new CSS styling for this challenge. What you will see in your browser d
 Remember to save your progress and use git add -A and git commit -m "your message" (with a more meaningful message) frequently throughout the exercise.
 
 4. Once you have finished working on this exercise remember to add, commit, and push your work to GitHub.
+
+## Important note before you begin
+
+There is new CSS styling for this challenge. What you will see in your browser differs to the styling in the code-along video. Don't panic! There is only one update you should make note of.
+
+In the code-along video at 7.22m, Joseph mentions if we want to see something rendering on the page we need somewhere for it to render to. To assist with this, in the `index.html` file we have added a `<div>` with a class called `container` so that your cafe items are nicely contained and styled with the supplied CSS. Please put all of your `<p>` tags and `<button>` tags inside the supplied `<div>` tag.
+
+For example, your code might look like this:
+
+````
+  <body>
+    <h1>Javascript Café</h1>
+    <div class="container">
+      <p>Some text here.</p>
+      <button>A button here!</button>
+    </div>
+    <script src="cafe.js"></script>
+  </body>
+````
 
 ## Stretch Exercises (Optional)
 
