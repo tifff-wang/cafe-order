@@ -17,7 +17,7 @@ let product = {
   },
 
   eggs: {
-    stock: 10,
+    stock: 6,
     price: 12.5,
   },
 }
@@ -83,6 +83,7 @@ displayCash()
 
 function fillOrder() {
   let saleTotal = 0
+  let customerPayment = getRandomInt(5, 50)
   for (let i = 0; i < customer.order.length; i++) {
     let productName = customer.order[i]
     if (product[productName].stock > 0) {
@@ -90,14 +91,25 @@ function fillOrder() {
       saleTotal += product[productName].price
     } else {
       alert(`I'm sorry, we're out of ${productName}`)
+      //product text to turn red when we run out of a particular product
+      document
+        .getElementById(`${productName}`)
+        .setAttribute('style', 'color:red')
     }
   }
-  cash += saleTotal
-  displayCash()
-  displayProducts()
-  customer.order = []
-  displayCustomerOrder()
-  console.log(customer.order)
+
+  if (customerPayment >= saleTotal) {
+    cash += saleTotal
+    displayCash()
+    displayProducts()
+    customer.order = []
+    displayCustomerOrder()
+  } else {
+    let debt = saleTotal - customerPayment
+    alert(
+      `Total Charge: $ ${saleTotal} \nCustomer Payment: $ ${customerPayment} \nSorry, not enough payment, needs to pay ${debt} more.`
+    )
+  }
 }
 
 document.getElementById('fillOrderButton').onclick = fillOrder
