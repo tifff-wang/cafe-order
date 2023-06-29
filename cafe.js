@@ -179,6 +179,23 @@ function fillOrder() {
     })
 
     displayProducts()
+
+    let orderHistory = result.foodCount
+    orderHistory['Total Price'] = result.totalPrice
+
+    console.log(orderHistory)
+
+    let orderHistoryArray = Object.entries(orderHistory)
+    let myString = orderHistoryArray.join('; ')
+    // let orderHistoryString = JSON.stringify(orderHistory)
+    let myDiv = document.getElementById('orderHistory')
+    let myInnerHTML = document.createElement('div')
+    myInnerHTML.innerHTML = `<div>
+    <p>${myString}</p>
+    <button>refund</button>
+    </div>`
+    myDiv.appendChild(myInnerHTML)
+
     customer.order = []
     displayCustomerOrder()
 
@@ -228,3 +245,13 @@ function getRandomInt(min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+// function displayOrderHistory() {
+//
+//
+// }
+// let orderHistoryString = JSON.stringify(result.foodCount, null, 2)
+// let myDiv = document.getElementById('orderHistory')
+// let myInnerHTML = document.createElement('pre')
+// myInnerHTML.innerHTML = `<pre>${orderHistoryString}<pre>`
+// myDiv.appendChild(myInnerHTML)
