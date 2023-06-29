@@ -64,6 +64,14 @@ function generateCustomerOrder() {
     let productName = productNames[productIndex]
     newOrder.push(productName)
   }
+
+  for (let i = 0; i <= newOrder.length; i++) {
+    if (newOrder[i] === 'eggs') {
+      document
+        .getElementById('eggCookChoice')
+        .setAttribute('style', 'display:block')
+    }
+  }
   customer.order = newOrder
   displayCustomerOrder()
 }
@@ -74,6 +82,26 @@ function displayCustomerOrder() {
   ).innerHTML = `Customer Order: ${customer.order}`
   console.log(customer.order)
 }
+
+function howEggCooked() {
+  let radios = document.getElementsByName('cookEgg')
+  let eggName
+  let customerOrderText = document.getElementById('customerOrder').innerHTML
+  let updateText
+
+  for (let i = 0; i < radios.length; i++) {
+    if (radios[i].checked) {
+      eggName = `${radios[i].value}-eggs`
+    }
+  }
+  if (customer.order.includes('eggs')) {
+    updateText = customerOrderText.replaceAll('eggs', eggName)
+    document.getElementById('customerOrder').innerHTML = updateText
+    radios[0].checked = 'checked'
+  }
+}
+
+document.getElementById('eggButton').onclick = howEggCooked
 
 function validateOrder(customerPayment) {
   /*
@@ -153,11 +181,11 @@ function fillOrder() {
     displayProducts()
     customer.order = []
     displayCustomerOrder()
-  }
 
-  //
-  //
-  //
+    document
+      .getElementById('eggCookChoice')
+      .setAttribute('style', 'display:none')
+  }
 }
 
 document.getElementById('fillOrderButton').onclick = fillOrder
