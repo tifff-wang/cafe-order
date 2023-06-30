@@ -11,6 +11,7 @@ body {
   background-size: 100px 100px;
   font-family: 'Fira Code', monospace;
   text-align: center;
+  padding-bottom: 200px;
 }
 
 p {
@@ -65,4 +66,8 @@ button:hover {
 
 #eggCookChoice {
   display: none;
+}
+
+#orderHistory {
+  margin-top: 60px;
 }

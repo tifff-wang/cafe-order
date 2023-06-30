@@ -26,6 +26,8 @@ let product = {
   },
 }
 
+let orderHistories = []
+
 function displayProducts() {
   document.getElementById(
     'whiteCoffee'
@@ -105,10 +107,11 @@ document.getElementById('eggButton').onclick = howEggCooked
 
 function validateOrder(customerPayment) {
   /*
-  {
+  result = {
     'isValidPayment' : true/false,
     'foodCount': {'egg': 2...},
-    'foodOutOfStok': ['whiteCoffee']
+    'foodOutOfStok': ['whiteCoffee'..]
+    'totalPrice': 12
   }
   */
   let result = {}
@@ -152,7 +155,7 @@ function displayCash() {
 displayCash()
 
 function fillOrder() {
-  let customerPayment = getRandomInt(20, 50)
+  let customerPayment = getRandomInt(30, 50)
   let result = validateOrder(customerPayment)
 
   if (!result.isValidPayment) {
@@ -179,22 +182,7 @@ function fillOrder() {
     })
 
     displayProducts()
-
-    let orderHistory = result.foodCount
-    orderHistory['Total Price'] = result.totalPrice
-
-    console.log(orderHistory)
-
-    let orderHistoryArray = Object.entries(orderHistory)
-    let myString = orderHistoryArray.join('; ')
-    // let orderHistoryString = JSON.stringify(orderHistory)
-    let myDiv = document.getElementById('orderHistory')
-    let myInnerHTML = document.createElement('div')
-    myInnerHTML.innerHTML = `<div>
-    <p>${myString}</p>
-    <button>refund</button>
-    </div>`
-    myDiv.appendChild(myInnerHTML)
+    displayOrderHistory(result)
 
     customer.order = []
     displayCustomerOrder()
@@ -246,12 +234,55 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-// function displayOrderHistory() {
-//
-//
-// }
-// let orderHistoryString = JSON.stringify(result.foodCount, null, 2)
-// let myDiv = document.getElementById('orderHistory')
-// let myInnerHTML = document.createElement('pre')
-// myInnerHTML.innerHTML = `<pre>${orderHistoryString}<pre>`
-// myDiv.appendChild(myInnerHTML)
+function displayOrderHistory(result) {
+  const id = Date.now()
+  let orderHistory = {
+    id: id,
+    foodCount: result.foodCount,
+    totalPrice: result.totalPrice,
+  }
+
+  orderHistories.push(orderHistory)
+
+  let orderHistoryArray = []
+
+  Object.keys(result.foodCount).forEach((item) => {
+    let string = `${item}: ${result.foodCount[item]}`
+    orderHistoryArray.push(string)
+  })
+
+  let foodOrdered = orderHistoryArray.join(', ')
+
+  let orderHistoryDisplay = `ID:${orderHistory.id}, Food Ordered: ${foodOrdered}, Total Price: $${orderHistory.totalPrice}`
+
+  let myDiv = document.getElementById('orderHistory')
+  let myInnerHTML = document.createElement('div')
+  myInnerHTML.innerHTML = `
+  <div id="${id}">
+  <p>${orderHistoryDisplay}</p>
+  <button onclick = "
+  refund(${id})
+  ">refund</button>
+  </div>`
+  myDiv.appendChild(myInnerHTML)
+}
+
+function refund(id) {
+  alert('Customer Comment: Not happy with the food.')
+  let refundOrderIndex
+  let orderHistory
+  for (let i = 0; i < orderHistories.length; i++) {
+    if (orderHistories[i].id === id) {
+      orderHistory = orderHistories[i]
+      refundOrderIndex = i
+      break
+    }
+  }
+
+  let refundPrice = orderHistory.totalPrice
+  cash -= refundPrice
+  orderHistories.splice(refundOrderIndex, 1)
+  displayCash()
+
+  document.getElementById(`${id}`).remove()
+}
