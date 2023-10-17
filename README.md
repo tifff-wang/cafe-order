@@ -1,5 +1,5 @@
 # JavaScript Cafe Order
-Welcome to the JavaScript Cafe! This is an app where you can fulfill orders for customers which are generated when you interact with the page.
+Welcome to the JavaScript Cafe, the very first app page that I wrote using JavaScript. This is an app where you can fulfill orders for customers which are generated when you interact with the page.
 
 ## Some of the additional features:
 
